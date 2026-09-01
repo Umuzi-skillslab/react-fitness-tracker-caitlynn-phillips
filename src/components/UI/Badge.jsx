@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import styles from './Badge.module.css';
+import styles from './UI.module.css';
 
 // Small label used for difficulty and category tags throughout the app
 const Badge = ({ text, variant }) => {

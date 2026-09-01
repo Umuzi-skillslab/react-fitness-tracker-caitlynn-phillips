@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import styles from './Card.module.css';
+import styles from './UI.module.css';
 
 // Generic container component — wraps any content passed as children,
 // and can optionally look "selected" via conditional styling
