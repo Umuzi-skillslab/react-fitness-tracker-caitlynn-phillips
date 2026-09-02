@@ -1,0 +1,30 @@
+.notFound {
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.notFound h1 {
+  font-size: 4rem;
+  margin-bottom: 0.5rem;
+  color: #2563eb;
+}
+
+.hero {
+  text-align: center;
+  padding: 3rem 1rem;
+  background-color: #eff6ff;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.featuredGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
