@@ -105,6 +105,85 @@
   margin-bottom: 0.75rem;
 }
 
+/* Modal */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  max-width: 600px;
+  width: 90%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modalClose {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: #6b7280;
+}
+
+.modalClose:hover {
+  color: #1f2937;
+}
+
+/* SearchBar */
+.searchBar {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.searchClear,
+.searchSubmit {
+  padding: 0.55rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.searchClear {
+  background-color: #e5e7eb;
+  color: #1f2937;
+}
+
+.searchSubmit {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
