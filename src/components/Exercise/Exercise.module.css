@@ -59,3 +59,19 @@
   font-weight: 600;
   cursor: pointer;
 }
+
+.detailContainer {
+  max-width: 700px;
+}
+
+.detailHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detailActions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
