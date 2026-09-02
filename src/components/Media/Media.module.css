@@ -1,0 +1,12 @@
+.videoContainer,
+.audioContainer {
+  background-color: #f9fafb;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.video {
+  border-radius: 8px;
+  margin-top: 0.5rem;
+}
