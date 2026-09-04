@@ -3,7 +3,7 @@ import styles from './UI.module.css';
 
 // Generic container component — wraps any content passed as children,
 // and can optionally look "selected" via conditional styling
-const Card = ({ children, selected, onClick }) => {
+const Card = ({ children, selected = false, onClick }) => {
   return (
     <div
       className={`${styles.card} ${selected ? styles.selected : ''}`}
@@ -18,11 +18,6 @@ Card.propTypes = {
   children: PropTypes.node.isRequired,
   selected: PropTypes.bool,
   onClick: PropTypes.func,
-};
-
-Card.defaultProps = {
-  selected: false,
-  onClick: undefined,
 };
 
 export default Card;

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import styles from './Media.module.css';
 
 // Embeds an exercise demonstration video with native HTML5 controls
-const VideoPlayer = ({ videoUrl, title, description }) => {
+const VideoPlayer = ({ videoUrl, title, description = '' }) => {
   return (
     <div className={styles.videoContainer}>
       <h3>{title}</h3>
@@ -19,10 +19,6 @@ VideoPlayer.propTypes = {
   videoUrl: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
-};
-
-VideoPlayer.defaultProps = {
-  description: '',
 };
 
 export default VideoPlayer;

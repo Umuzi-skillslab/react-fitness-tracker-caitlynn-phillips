@@ -3,7 +3,14 @@ import ExerciseCard from './ExerciseCard';
 import Loading from '../UI/Loading';
 import styles from './Exercise.module.css';
 
-const ExerciseList = ({ exercises, isLoading, plannedIds, onSelectExercise, onAddToWorkout }) => {
+// Renders a grid of ExerciseCards, with loading and empty states handled
+const ExerciseList = ({
+  exercises,
+  isLoading = false,
+  plannedIds = [],
+  onSelectExercise = () => {},
+  onAddToWorkout = () => {},
+}) => {
   if (isLoading) {
     return <Loading message="Loading exercises..." />;
   }
@@ -33,13 +40,6 @@ ExerciseList.propTypes = {
   plannedIds: PropTypes.array,
   onSelectExercise: PropTypes.func,
   onAddToWorkout: PropTypes.func,
-};
-
-ExerciseList.defaultProps = {
-  isLoading: false,
-  plannedIds: [],
-  onSelectExercise: () => {},
-  onAddToWorkout: () => {},
 };
 
 export default ExerciseList;

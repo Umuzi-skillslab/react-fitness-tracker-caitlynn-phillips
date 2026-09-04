@@ -5,7 +5,7 @@ import VideoPlayer from '../Media/VideoPlayer';
 import styles from './Exercise.module.css';
 
 // Full detail view for a single exercise, including video demo and instructions
-const ExerciseDetail = ({ exercise, isInPlan, onAdd, onClose }) => {
+const ExerciseDetail = ({ exercise = null, isInPlan = false, onAdd = () => {}, onClose = null }) => {
   // Guard clause — if no exercise was found/passed, show a fallback
   if (!exercise) {
     return <p>Exercise not found.</p>;
@@ -72,13 +72,6 @@ ExerciseDetail.propTypes = {
   isInPlan: PropTypes.bool,
   onAdd: PropTypes.func,
   onClose: PropTypes.func,
-};
-
-ExerciseDetail.defaultProps = {
-  exercise: null,
-  isInPlan: false,
-  onAdd: () => {},
-  onClose: null,
 };
 
 export default ExerciseDetail;

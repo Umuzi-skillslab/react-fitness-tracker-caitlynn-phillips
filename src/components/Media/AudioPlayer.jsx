@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import styles from './Media.module.css';
 
 // Embeds a motivational audio track with native HTML5 controls
-const AudioPlayer = ({ audioUrl, title, description }) => {
+const AudioPlayer = ({ audioUrl, title, description = '' }) => {
   return (
     <div className={styles.audioContainer}>
       <h4>{title}</h4>
@@ -19,10 +19,6 @@ AudioPlayer.propTypes = {
   audioUrl: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
-};
-
-AudioPlayer.defaultProps = {
-  description: '',
 };
 
 export default AudioPlayer;

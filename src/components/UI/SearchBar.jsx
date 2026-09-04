@@ -4,7 +4,7 @@ import styles from './UI.module.css';
 
 // Controlled search input — calls onSearch as the user types,
 // and supports a clear button to reset the term
-const SearchBar = ({ onSearch, placeholder }) => {
+const SearchBar = ({ onSearch, placeholder = 'Search exercises...' }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   // Access the event object directly to read the typed value
@@ -48,10 +48,6 @@ const SearchBar = ({ onSearch, placeholder }) => {
 SearchBar.propTypes = {
   onSearch: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
-};
-
-SearchBar.defaultProps = {
-  placeholder: 'Search exercises...',
 };
 
 export default SearchBar;

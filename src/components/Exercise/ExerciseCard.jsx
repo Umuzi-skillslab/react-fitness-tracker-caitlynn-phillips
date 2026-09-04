@@ -6,7 +6,7 @@ import styles from './Exercise.module.css';
 
 // Displays a single exercise summary — used inside ExerciseList,
 // the Home page featured section, and WorkoutPlanner's DayCard
-const ExerciseCard = ({ exercise, isInPlan, onSelect, onAdd }) => {
+const ExerciseCard = ({ exercise, isInPlan = false, onSelect = () => {}, onAdd = () => {} }) => {
   // Pick an emoji based on difficulty — a small data transformation
   // used directly inside JSX below
   const difficultyIcon =
@@ -58,12 +58,6 @@ ExerciseCard.propTypes = {
   isInPlan: PropTypes.bool,
   onSelect: PropTypes.func,
   onAdd: PropTypes.func,
-};
-
-ExerciseCard.defaultProps = {
-  isInPlan: false,
-  onSelect: () => {},
-  onAdd: () => {},
 };
 
 export default ExerciseCard;

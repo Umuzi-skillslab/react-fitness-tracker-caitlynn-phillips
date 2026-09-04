@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import styles from './UI.module.css';
 
 // Reusable button with variant-based styling (primary, secondary, danger)
-const Button = ({ children, variant, onClick, type, disabled }) => {
+const Button = ({ children, variant = 'primary', onClick, type = 'button', disabled = false }) => {
   return (
     <button
       type={type}
@@ -21,13 +21,6 @@ Button.propTypes = {
   onClick: PropTypes.func,
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
   disabled: PropTypes.bool,
-};
-
-// Default values for optional props
-Button.defaultProps = {
-  variant: 'primary',
-  type: 'button',
-  disabled: false,
 };
 
 export default Button;
