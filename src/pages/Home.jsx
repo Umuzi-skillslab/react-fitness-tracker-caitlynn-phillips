@@ -4,9 +4,7 @@ import AudioPlayer from '../components/Media/AudioPlayer';
 import Button from '../components/UI/Button';
 import styles from './Pages.module.css';
 
-// Landing page — hero section, a few featured exercises, and motivation audio
-const Home = ({ exercises, workoutPlan, onSelectExercise, onAddToWorkout }) => {
-  // Show only the first 3 exercises as a "featured" preview
+const Home = ({ exercises, plannedIds, onSelectExercise, onAddToWorkout }) => {
   const featuredExercises = exercises.slice(0, 3);
 
   return (
@@ -32,7 +30,7 @@ const Home = ({ exercises, workoutPlan, onSelectExercise, onAddToWorkout }) => {
             <ExerciseCard
               key={exercise.id}
               exercise={exercise}
-              isInPlan={workoutPlan.some((e) => e.id === exercise.id)}
+              isInPlan={plannedIds.includes(exercise.id)}
               onSelect={onSelectExercise}
               onAdd={onAddToWorkout}
             />

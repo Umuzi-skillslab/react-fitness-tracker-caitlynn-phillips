@@ -3,5 +3,5 @@ import App from './App';
 
 test('renders without crashing', () => {
   render(<App />);
-  expect(screen.getByText(/get started/i)).toBeInTheDocument();
+  expect(screen.getByText(/track your fitness journey/i)).toBeInTheDocument();
 });

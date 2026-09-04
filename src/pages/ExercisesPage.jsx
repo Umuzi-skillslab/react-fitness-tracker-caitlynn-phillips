@@ -4,20 +4,17 @@ import ExerciseFilter from '../components/Exercise/ExerciseFilter';
 import ExerciseList from '../components/Exercise/ExerciseList';
 import styles from './Pages.module.css';
 
-// Browse/search/filter page for all exercises
-const ExercisesPage = ({ exercises, workoutPlan, onSelectExercise, onAddToWorkout }) => {
+const ExercisesPage = ({ exercises, plannedIds, onSelectExercise, onAddToWorkout }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [category, setCategory] = useState('all');
   const [difficulty, setDifficulty] = useState('all');
   const [isLoading, setIsLoading] = useState(true);
 
-  // Simulate a brief loading state when the page first mounts
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 400);
     return () => clearTimeout(timer);
   }, []);
 
-  // Apply search term, category, and difficulty filters together
   const filteredExercises = exercises.filter((exercise) => {
     const matchesSearch = exercise.name.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = category === 'all' || exercise.category === category;
@@ -44,7 +41,7 @@ const ExercisesPage = ({ exercises, workoutPlan, onSelectExercise, onAddToWorkou
       <ExerciseList
         exercises={filteredExercises}
         isLoading={isLoading}
-        workoutPlan={workoutPlan}
+        plannedIds={plannedIds}
         onSelectExercise={onSelectExercise}
         onAddToWorkout={onAddToWorkout}
       />
