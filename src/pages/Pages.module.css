@@ -1,0 +1,62 @@
+.notFound {
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.notFound h1 {
+  font-size: 4rem;
+  margin-bottom: 0.5rem;
+  color: #2563eb;
+}
+
+.hero {
+  text-align: center;
+  padding: 3rem 1rem;
+  background-color: #eff6ff;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.featuredGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.exercisesPage h1 {
+  margin-bottom: 1rem;
+}
+
+.plannerPage h1 {
+  margin-bottom: 0.25rem;
+}
+
+.plannerPage p {
+  color: #6b7280;
+  margin-bottom: 1rem;
+}
+
+.historyPage h1 {
+  margin-bottom: 1rem;
+}
+
+.progressPage h1 {
+  margin-bottom: 1rem;
+}
+
+.detailPage {
+  padding: 0.5rem 0;
+}
+
+.detailNav {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
