@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import Navbar from './Navbar';
 
@@ -27,5 +27,22 @@ describe('Navbar', () => {
 
     expect(exercisesLink.className).toMatch(/active/);
     expect(homeLink.className).not.toMatch(/active/);
+  });
+
+  test('toggles mobile menu open and closed when hamburger button is clicked', () => {
+    render(
+      <MemoryRouter>
+        <Navbar />
+      </MemoryRouter>
+    );
+    const hamburgerBtn = screen.getByLabelText('Toggle navigation menu');
+    expect(hamburgerBtn).toBeInTheDocument();
+
+    fireEvent.click(hamburgerBtn);
+    const homeLink = screen.getByText('Home');
+    expect(homeLink.closest('div').className).toMatch(/mobileOpen/);
+
+    fireEvent.click(hamburgerBtn);
+    expect(homeLink.closest('div').className).not.toMatch(/mobileOpen/);
   });
 });
