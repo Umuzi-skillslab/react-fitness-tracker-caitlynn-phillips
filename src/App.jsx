@@ -11,6 +11,7 @@ import HistoryPage from './pages/HistoryPage';
 import ProgressPage from './pages/ProgressPage';
 import NotFound from './pages/NotFound';
 import { exercisesData } from './data/exercisesData';
+import useLocalStorage from './utils/useLocalStorage';
 import './App.css';
 
 const daysOfWeek = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
@@ -18,8 +19,8 @@ const emptyPlan = daysOfWeek.reduce((acc, day) => ({ ...acc, [day]: [] }), {});
 
 function App() {
   const [exercises, setExercises] = useState([]);
-  const [workoutPlan, setWorkoutPlan] = useState(emptyPlan);
-  const [workoutHistory, setWorkoutHistory] = useState([]);
+  const [workoutPlan, setWorkoutPlan] = useLocalStorage('workoutPlan', emptyPlan);
+  const [workoutHistory, setWorkoutHistory] = useLocalStorage('workoutHistory', []);
   const [selectedExercise, setSelectedExercise] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
@@ -27,28 +28,6 @@ function App() {
   useEffect(() => {
     setExercises(exercisesData);
   }, []);
-
-  // Hydrate workout plan from localStorage on mount
-  useEffect(() => {
-    const saved = localStorage.getItem('workoutPlan');
-    if (saved) setWorkoutPlan(JSON.parse(saved));
-  }, []);
-
-  // Hydrate workout history from localStorage on mount
-  useEffect(() => {
-    const saved = localStorage.getItem('workoutHistory');
-    if (saved) setWorkoutHistory(JSON.parse(saved));
-  }, []);
-
-  // Persist workout plan whenever it changes
-  useEffect(() => {
-    localStorage.setItem('workoutPlan', JSON.stringify(workoutPlan));
-  }, [workoutPlan]);
-
-  // Persist workout history whenever it changes
-  useEffect(() => {
-    localStorage.setItem('workoutHistory', JSON.stringify(workoutHistory));
-  }, [workoutHistory]);
 
   // Maps JS's getDay() (0 = Sunday) onto our Monday-first daysOfWeek array
   const getTodayName = () => daysOfWeek[(new Date().getDay() + 6) % 7];
