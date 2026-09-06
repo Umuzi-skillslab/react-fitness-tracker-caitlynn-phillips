@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import ExerciseCard from '../Exercise/ExerciseCard';
 import Button from '../UI/Button';
 import styles from './WorkoutPlanner.module.css';
 
