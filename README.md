@@ -36,10 +36,10 @@ npm install
 npm run dev
 
 # 3. Run Jest test suite
-npm test -- --watchAll=false
+npm test
 
 # 4. Generate coverage report
-npm test -- --coverage --watchAll=false
+npm test -- --coverage
 ```
 
 ---
@@ -132,6 +132,7 @@ The test suite contains **53 tests across 16 test suites**, covering component r
 
 8. **Test Coverage Report**:  
    ![Test Coverage Report](src/assets/screenshots/test_coverage.png)
+
 ---
 
 ## 🔮 Future Enhancements
