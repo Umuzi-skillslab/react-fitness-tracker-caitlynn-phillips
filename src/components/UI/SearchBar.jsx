@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import styles from './UI.module.css';
 
 // Controlled search input — calls onSearch as the user types,
-// and supports a clear button to reset the term
+// handles focus/blur states, keyboard ESC clear, and clear button
 const SearchBar = ({ onSearch, placeholder = 'Search exercises...' }) => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [isFocused, setIsFocused] = useState(false);
 
   // Access the event object directly to read the typed value
   const handleChange = (e) => {
@@ -24,14 +25,35 @@ const SearchBar = ({ onSearch, placeholder = 'Search exercises...' }) => {
     onSearch('');
   };
 
+  // Event handler for input focus event
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
+
+  // Event handler for input blur event
+  const handleBlur = () => {
+    setIsFocused(false);
+  };
+
+  // Clear search term on Escape key press
+  const handleKeyDown = (e) => {
+    if (e.key === 'Escape') {
+      handleClear();
+    }
+  };
+
   return (
     <form className={styles.searchBar} onSubmit={handleSubmit}>
       <input
         type="text"
         value={searchTerm}
         onChange={handleChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        onKeyDown={handleKeyDown}
         placeholder={placeholder}
-        className={styles.searchInput}
+        className={`${styles.searchInput} ${isFocused ? styles.focusedInput : ''}`}
+        style={{ padding: '0.6rem 1rem', borderRadius: '6px' }}
       />
       {searchTerm && (
         <button type="button" onClick={handleClear} className={styles.searchClear}>

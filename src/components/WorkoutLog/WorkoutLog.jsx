@@ -4,7 +4,7 @@ import LogEntry from './LogEntry';
 import Button from '../UI/Button';
 import styles from './WorkoutLog.module.css';
 
-// Form for logging a completed workout, plus a list of past entries
+// Form for logging a completed workout, plus a list of past entries with validation
 const WorkoutLog = ({ exercises, workoutHistory, onLogWorkout }) => {
   const [currentLog, setCurrentLog] = useState({
     exerciseId: '',
@@ -12,10 +12,16 @@ const WorkoutLog = ({ exercises, workoutHistory, onLogWorkout }) => {
     reps: 0,
     weight: 0,
   });
+  const [inputError, setInputError] = useState('');
 
   // Handle the log-workout form submission
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!currentLog.exerciseId) {
+      setInputError('Please select an exercise.');
+      return;
+    }
+
     const exercise = exercises.find((ex) => ex.id === Number(currentLog.exerciseId));
     if (!exercise) return;
 
@@ -30,10 +36,25 @@ const WorkoutLog = ({ exercises, workoutHistory, onLogWorkout }) => {
 
     // Reset the form after logging
     setCurrentLog({ exerciseId: '', sets: 0, reps: 0, weight: 0 });
+    setInputError('');
+  };
+
+  // Validate fields on blur event
+  const handleInputBlur = (field, value) => {
+    if (value < 0) {
+      setInputError(`${field} cannot be negative.`);
+    } else {
+      setInputError('');
+    }
   };
 
   return (
     <div className={styles.workoutLog}>
+      {inputError && (
+        <div style={{ color: '#dc2626', marginBottom: '0.75rem', fontWeight: 600 }}>
+          {inputError}
+        </div>
+      )}
       <form onSubmit={handleSubmit} className={styles.logForm}>
         <select
           value={currentLog.exerciseId}
@@ -52,6 +73,7 @@ const WorkoutLog = ({ exercises, workoutHistory, onLogWorkout }) => {
           placeholder="Sets"
           value={currentLog.sets}
           onChange={(e) => setCurrentLog({ ...currentLog, sets: e.target.value })}
+          onBlur={(e) => handleInputBlur('Sets', Number(e.target.value))}
           min="0"
         />
         <input
@@ -59,6 +81,7 @@ const WorkoutLog = ({ exercises, workoutHistory, onLogWorkout }) => {
           placeholder="Reps"
           value={currentLog.reps}
           onChange={(e) => setCurrentLog({ ...currentLog, reps: e.target.value })}
+          onBlur={(e) => handleInputBlur('Reps', Number(e.target.value))}
           min="0"
         />
         <input
@@ -66,6 +89,7 @@ const WorkoutLog = ({ exercises, workoutHistory, onLogWorkout }) => {
           placeholder="Weight (kg)"
           value={currentLog.weight}
           onChange={(e) => setCurrentLog({ ...currentLog, weight: e.target.value })}
+          onBlur={(e) => handleInputBlur('Weight', Number(e.target.value))}
           min="0"
         />
         <Button type="submit">Log Workout</Button>
