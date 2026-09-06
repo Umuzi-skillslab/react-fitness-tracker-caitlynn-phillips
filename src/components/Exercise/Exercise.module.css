@@ -48,6 +48,12 @@
   border-radius: 6px;
   font-size: 0.9rem;
   background-color: #ffffff;
+  color: #111827;
+}
+
+.filterSelect option {
+  color: #111827;
+  background-color: #ffffff;
 }
 
 .clearFilters {
